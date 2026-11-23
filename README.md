@@ -1,4 +1,4 @@
-# ⚔️ Enterprise Red-Team Adversary Emulation Framework
+# Enterprise Red-Team Adversary Emulation Framework
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/MITRE-ATT%26CK%20Matrix-red.svg)](https://attack.mitre.org/)
@@ -9,7 +9,7 @@ An enterprise-grade Red Team adversary emulation playbook, attack surface analyz
 
 ---
 
-## 🏛️ Adversary Emulation Architecture
+## Adversary Emulation Architecture
 
 ```mermaid
 flowchart TD
@@ -51,7 +51,7 @@ flowchart TD
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 Enterprise-RedTeam-Operations/
@@ -76,7 +76,7 @@ Enterprise-RedTeam-Operations/
 
 ---
 
-## 🛠️ Tooling & Active Directory Analysis (`tools/ad_audit.py`)
+## Tooling & Active Directory Analysis (tools/ad_audit.py)
 
 `tools/ad_audit.py` is a zero-dependency CLI analyzer for evaluating Active Directory accounts, decoding UserAccountControl bitmasks, and identifying high-value Kerberoasting / AS-REP roasting attack paths:
 
@@ -97,7 +97,7 @@ python3 tools/ad_audit.py analyze --file ad_users.json --out ad_risk_report.md
 
 ---
 
-## 📋 Adversary Emulation Playbooks
+## Adversary Emulation Playbooks
 
 - **[01. Initial Access & Phishing](playbooks/01-initial-access-and-phishing.md)**: Infrastructure staging, container delivery (ISO/VHD) bypassing Mark-of-the-Web (MOTW), and HTML smuggling.
 - **[02. EDR Evasion & Execution](playbooks/02-edr-evasion-and-execution.md)**: User-mode unhooking via clean `ntdll.dll` mapping, indirect syscalls (Hell's Gate), and memory patching of `AmsiScanBuffer` and `EtwEventWrite`.
@@ -106,7 +106,7 @@ python3 tools/ad_audit.py analyze --file ad_users.json --out ad_risk_report.md
 
 ---
 
-## 📑 Engagement Deliverables & Templates
+## Engagement Deliverables & Templates
 
 - **[Sanitized Red Team Final Report](reports/2026-enterprise-redteam-engagement-report.md)**: Complete 14-day engagement report documenting full kill chain execution, Blue Team detection scorecard, and enterprise remediation roadmap.
 - **[Rules of Engagement (RoE) Agreement](templates/rules_of_engagement.md)**: Industry-standard contract establishing operational boundaries, authorization, emergency stop protocols, and trusted contacts.
@@ -114,6 +114,6 @@ python3 tools/ad_audit.py analyze --file ad_users.json --out ad_risk_report.md
 
 ---
 
-## ⚖️ Legal & Ethical Disclaimer
+## Legal & Ethical Disclaimer
 
 All playbooks, tools, and technical documentation in this repository are developed strictly for authorized security training, internal red-team simulations, and defensive posture evaluation. Unauthorized testing against systems without prior written authorization under signed Rules of Engagement is strictly illegal.
