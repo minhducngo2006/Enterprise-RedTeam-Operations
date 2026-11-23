@@ -51,31 +51,6 @@ flowchart TD
 
 ---
 
-## Repository Structure
-
-```text
-Enterprise-RedTeam-Operations/
-├── .gitignore
-├── README.md                                          # Framework architecture and operational guide
-├── tools/
-│   ├── ad_audit.py                                    # Active Directory & Kerberos attack surface analyzer
-│   └── requirements.txt                               # Environment dependencies
-├── tests/
-│   └── test_ad_audit.py                               # Unit test verification suite
-├── playbooks/                                         # Step-by-step technical execution guides
-│   ├── 01-initial-access-and-phishing.md              # Container evasion, LNK weaponization, perimeter breach
-│   ├── 02-edr-evasion-and-execution.md                # In-memory execution, AMSI patching, indirect syscalls
-│   ├── 03-active-directory-privilege-escalation.md    # Kerberoasting, AS-REP Roasting, AD CS ESC1
-│   └── 04-lateral-movement-and-persistence.md         # Fileless WinRM/WMI, Golden Ticket, persistence
-├── reports/
-│   └── 2026-enterprise-redteam-engagement-report.md   # Complete sanitized engagement final report
-└── templates/
-    ├── rules_of_engagement.md                         # Formal Red Team RoE contract and scope agreement
-    └── deconfliction_ioc_ledger.md                    # Operational activity and artifact tracking ledger
-```
-
----
-
 ## Tooling & Active Directory Analysis (tools/ad_audit.py)
 
 `tools/ad_audit.py` is a zero-dependency CLI analyzer for evaluating Active Directory accounts, decoding UserAccountControl bitmasks, and identifying high-value Kerberoasting / AS-REP roasting attack paths:
