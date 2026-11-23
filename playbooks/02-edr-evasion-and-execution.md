@@ -9,17 +9,6 @@ This playbook outlines post-exploitation execution techniques designed to operat
 ### Mechanism of EDR User-Mode Detection
 EDR agents inject a monitoring DLL into newly spawned processes and place `JMP` instructions (hooks) at the entry points of critical Windows Native APIs (such as `NtCreateThreadEx`, `NtAllocateVirtualMemory`, `NtWriteVirtualMemory`) inside `ntdll.dll`.
 
-```
-Application Calls NtAllocateVirtualMemory()
-                    │
-                    ▼
-       [ ntdll.dll in memory ]
-   ┌───────────────────────────────┐
-   │ JMP edr_sensor.dll            │ ──► [ EDR Telemetry & Behavioral Engine ]
-   │ (Hook placed by security agent│
-   └───────────────────────────────┘
-```
-
 ### Remediation via Clean NTDLL Mapping
 To bypass user-mode hooks, the loader reads a fresh copy of `ntdll.dll` from the disk or `\KnownDlls\ntdll.dll` into memory and restores the original `.text` section bytes of the hooked functions:
 1. Locate base address of loaded `ntdll.dll` via the Process Environment Block (`PEB`).

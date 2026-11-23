@@ -2,16 +2,6 @@
 
 This playbook covers methodologies for establishing initial footholds in enterprise environments aligned with the MITRE ATT&CK framework.
 
-```
-+--------------------+        Spear-Phishing LNK/ISO        +---------------------+
-| External Red Team  | ───────────────────────────────────> | Internal Workstation|
-| C2 Infrastructure  |                                      | (Foothold Machine)  |
-+--------------------+                                      +---------------------+
-         ▲                                                             │
-         │                Encrypted HTTPS C2 Beacon                    │
-         └─────────────────────────────────────────────────────────────┘
-```
-
 ## 1. External Reconnaissance & Pre-Attack Preparation
 * **Target Profiling (T1592 / T1589)**: Identify corporate email formats, organizational hierarchies, VPN portals, and Single Sign-On (SSO) endpoints via passive OSINT (LinkedIn, GitHub commits, WHOIS, DNS records).
 * **Infrastructure Setup (T1583 / T1584)**:

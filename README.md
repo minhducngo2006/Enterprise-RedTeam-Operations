@@ -9,45 +9,12 @@ An enterprise-grade Red Team adversary emulation playbook, attack surface analyz
 
 ---
 
-## Adversary Emulation Architecture
+## Execution Phases
 
-```mermaid
-flowchart TD
-    subgraph Phase1 ["1. Initial Access & Defense Evasion"]
-        direction TB
-        Phish["Spear-Phishing Payload<br/>(ISO / LNK Container)"]
-        Bypass["EDR & AMSI Evasion<br/>(Clean NTDLL / In-Memory Patching)"]
-        C2["Encrypted C2 Beacon<br/>(Jittered TLS / DNS Redirector)"]
-        Phish --> Bypass --> C2
-    end
-
-    subgraph Phase2 ["2. Internal Recon & Credential Access"]
-        direction TB
-        LDAP["Targeted LDAP Profiling<br/>(BloodHound / Paged Queries)"]
-        Kerb["Kerberoasting<br/>(TGS Ticket Hash Recovery)"]
-        ASREP["AS-REP Roasting<br/>(Pre-Auth Disabled Accounts)"]
-        LDAP --> Kerb
-        LDAP --> ASREP
-    end
-
-    subgraph Phase3 ["3. Privilege Escalation & Lateral Movement"]
-        direction TB
-        ADCS["AD CS Abuse (ESC1)<br/>(SAN Certificate Impersonation)"]
-        Lateral["Fileless Lateral Movement<br/>(WinRM / WMI / Kerberos TGT)"]
-        ADCS --> Lateral
-    end
-
-    subgraph Phase4 ["4. Domain Dominance & Objective"]
-        direction TB
-        DC["Domain Controller Compromise<br/>(Tier 0 Enterprise Admin)"]
-        CrownJewels["Crown Jewels Access<br/>(Financial ERP Database Staging)"]
-        DC --> CrownJewels
-    end
-
-    C2 --> LDAP
-    Kerb --> ADCS
-    Lateral --> DC
-```
+1. **Initial Access & Defense Evasion**: Weaponized container delivery (ISO/LNK) to bypass MOTW; in-memory AMSI/ETW patching and indirect syscalls.
+2. **Internal Reconnaissance & Credential Access**: Targeted LDAP queries, Kerberoasting service accounts (T1558.003), and AS-REP Roasting (T1558.004).
+3. **Privilege Escalation & Lateral Movement**: Active Directory Certificate Services (AD CS - ESC1) exploitation and fileless remote execution via WinRM/WMI.
+4. **Domain Dominance & Crown Jewels**: Full Tier 0 Active Directory forest control and verification of sensitive business data access.
 
 ---
 

@@ -2,14 +2,6 @@
 
 This playbook covers technical methodologies for escalating privileges within an Active Directory Domain from a standard domain user foothold up to Tier 0 (Domain Admin / Enterprise Admin).
 
-```
-[ Domain User Foothold ]
-           │
-           ├─► AS-REP Roasting (No Pre-Auth Accounts) ───────► Offline Hash Cracking
-           ├─► Kerberoasting (Service Accounts with SPN) ────► TGS RC4/AES Hash Recovery
-           └─► AD CS Certificate Misconfiguration (ESC1) ────► Full Domain Admin Impersonation
-```
-
 ---
 
 ## 1. Internal Domain Reconnaissance (T1087 / T1069)

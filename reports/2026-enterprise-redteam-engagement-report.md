@@ -19,20 +19,18 @@ A simulated full-scope adversary emulation exercise was conducted against the ta
 3. **Privilege Escalation & Domain Dominance**: By performing Kerberoasting against a high-privilege service account (`svc_mssql_prod`) and exploiting Active Directory Certificate Services (AD CS - ESC1), the Red Team obtained full Domain Administrator privileges within 72 hours of initial access.
 4. **Crown Jewels Compromised**: Successfully accessed the production database cluster, obtaining administrative access to over 1.2 million customer financial records, and simulated exfiltration via encrypted C2 channels.
 
-```
-+-----------------------------------------------------------------------------------------+
-|                               ATTACK TIMELINE SUMMARY                                   |
-+-----------------------------------------------------------------------------------------+
-| Day 1-2   | OSINT, infrastructure staging, C2 redirectors deployed                     |
-| Day 3     | Phishing payload delivered -> Foothold established on Workstation WS-0419 |
-| Day 4-5   | In-memory EDR evasion -> Internal AD enumeration via BloodHound            |
-| Day 6     | Kerberoasting attack executes -> svc_mssql_prod hash recovered & cracked   |
-| Day 7     | Lateral movement to SQL Cluster -> Pivoted across internal VLANs           |
-| Day 8     | AD CS ESC1 certificate request -> Domain Administrator impersonation        |
-| Day 9-11  | Full Domain Controller compromise -> ERP customer database dumped          |
-| Day 12-14 | Deconfliction with Blue Team, artifact cleanup, remediation alignment      |
-+-----------------------------------------------------------------------------------------+
-```
+### Attack Timeline Summary
+
+| Phase | Duration | Operational Milestone |
+| :--- | :--- | :--- |
+| **Reconnaissance** | Day 1-2 | OSINT, infrastructure staging, C2 redirectors deployed |
+| **Initial Access** | Day 3 | Phishing payload delivered; foothold established on Workstation WS-0419 |
+| **Evasion & Discovery** | Day 4-5 | In-memory EDR evasion; internal AD enumeration via BloodHound |
+| **Credential Access** | Day 6 | Kerberoasting executed; svc_mssql_prod hash recovered and cracked |
+| **Lateral Movement** | Day 7 | Lateral movement to SQL Cluster; pivoted across internal VLANs |
+| **Domain Dominance** | Day 8 | AD CS ESC1 certificate request; Domain Administrator impersonation |
+| **Crown Jewels Action** | Day 9-11 | Full Domain Controller compromise; ERP customer database dumped |
+| **Closure & Remediation**| Day 12-14 | Deconfliction with Blue Team, artifact cleanup, remediation alignment |
 
 ---
 
