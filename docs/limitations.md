@@ -1,6 +1,6 @@
 # Limitations
 
-> This project is an offline defensive evidence portfolio under local development. It is not a live assessment service, attack platform, compliance certification or substitute for an authorized security engagement.
+> This project is a published offline defensive evidence portfolio. It is not a live assessment service, attack platform, compliance certification or substitute for an authorized security engagement.
 
 ## 1. Synthetic-only evidence
 
@@ -50,7 +50,7 @@ The legacy dataset analyzer has been removed. The scalar UAC decoder is educatio
 
 ## 7. Runtime and platform support
 
-Python 3.11–3.14 is the target. Linux CI is configured and Windows is best effort. Candidate development tests passed on Linux Python 3.11.18, 3.12.16, 3.13.15 and 3.14.7; Windows was not run. Remote CI and compatibility for the exact final authorized SHA remain unverified. Core and tests are standard-library-only.
+Python 3.11–3.14 is the target. Linux CI is configured and Windows is best effort. Candidate development tests passed on Linux Python 3.11.18, 3.12.16, 3.13.15 and 3.14.7; Windows was not run. The remote GitHub Actions matrix passed on portfolio implementation commit `632c121c2b44d0a6d95399aa4491c439b23e8e0d` for Linux Python 3.11–3.14; subsequent commits must be checked separately. Core and tests are standard-library-only.
 
 ## 8. Local file boundary
 

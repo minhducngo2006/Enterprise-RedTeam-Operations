@@ -106,7 +106,7 @@ See [Contributing](CONTRIBUTING.md) for the local workflow and code conventions.
 
 - CI is configured for Linux and Python 3.11–3.14 in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 - The local candidate test suite has 45 tests. It was verified on Linux Python 3.11.18, 3.12.16, 3.13.15 and 3.14.7; Windows was not tested.
-- Remote GitHub Actions status for the exact published commit must be checked before treating the CI matrix as verified; see the [release checklist](docs/release-checklist.md).
+- The remote GitHub Actions matrix passed on portfolio implementation commit [`632c121`](https://github.com/minhducngo2006/Enterprise-RedTeam-Operations/commit/632c121c2b44d0a6d95399aa4491c439b23e8e0d) for Python 3.11–3.14; see the [workflow run](https://github.com/minhducngo2006/Enterprise-RedTeam-Operations/actions/runs/45653673058). Windows remains untested.
 
 ## Safety, limitations and release status
 
