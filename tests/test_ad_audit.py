@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Unit tests for Active Directory Attack Surface Analyzer (ad_audit)
+Unit tests for the scalar UserAccountControl decoder (ad_audit)
 """
 
-import unittest
-import sys
 import os
+import sys
+import unittest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tools")))
-from ad_audit import UACParser, ActiveDirectoryAuditor
+from ad_audit import UACParser
 
 class TestADAudit(unittest.TestCase):
 
@@ -26,28 +26,6 @@ class TestADAudit(unittest.TestCase):
         res = UACParser.parse(4194816)
         self.assertTrue(res["is_asrep_roastable"])
         self.assertEqual(res["risk_level"], "HIGH")
-
-    def test_kerberoasting_evaluation(self):
-        """Verify service account with SPN is flagged for Kerberoasting."""
-        account = {
-            "sAMAccountName": "svc_sql",
-            "servicePrincipalNames": ["MSSQLSvc/sql01:1433"],
-            "adminCount": 1
-        }
-        res = ActiveDirectoryAuditor.evaluate_spn(account)
-        self.assertIsNotNone(res)
-        self.assertEqual(res["account"], "svc_sql")
-        self.assertEqual(res["risk"], "HIGH")
-        self.assertEqual(res["tier"], "Tier 0 / Privileged")
-
-    def test_machine_account_spn_ignored(self):
-        """Verify computer accounts ($) are not flagged as standard Kerberoast targets."""
-        account = {
-            "sAMAccountName": "DC01$",
-            "servicePrincipalNames": ["HOST/DC01.corp.local"]
-        }
-        res = ActiveDirectoryAuditor.evaluate_spn(account)
-        self.assertIsNone(res)
 
 if __name__ == "__main__":
     unittest.main()

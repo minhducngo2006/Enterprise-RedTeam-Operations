@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "catalog_version": 1,
+  "source_kind": "synthetic",
+  "summary": {
+    "catalog_total": 5,
+    "total": 5,
+    "omitted": 0,
+    "met": 2,
+    "not_met": 1,
+    "inconclusive": 1,
+    "not_tested": 1,
+    "evaluated": 3,
+    "evaluation_coverage_pct": 60.0,
+    "met_pct_of_evaluated": 66.67
+  },
+  "controls": [
+    {
+      "control_id": "LAB-C001",
+      "title": "Backup restoration",
+      "criterion": "Synthetic restore exercise records a successful recovery.",
+      "status": "met",
+      "evidence_id": "LAB-E001"
+    },
+    {
+      "control_id": "LAB-C002",
+      "title": "Alert triage",
+      "criterion": "Synthetic alert record documents an assigned owner and disposition.",
+      "status": "met",
+      "evidence_id": "LAB-E002"
+    },
+    {
+      "control_id": "LAB-C003",
+      "title": "Patch review",
+      "criterion": "Synthetic patch review records an approved remediation decision.",
+      "status": "not_met",
+      "evidence_id": "LAB-E003"
+    },
+    {
+      "control_id": "LAB-C004",
+      "title": "Access review",
+      "criterion": "Synthetic review records approval of a fictional access policy.",
+      "status": "inconclusive",
+      "evidence_id": null
+    },
+    {
+      "control_id": "LAB-C005",
+      "title": "Incident escalation",
+      "criterion": "Synthetic exercise records a documented escalation decision.",
+      "status": "not_tested",
+      "evidence_id": null
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "source_kind": "synthetic",
+  "controls": [
+    {
+      "control_id": "LAB-C001",
+      "status": "met",
+      "evidence_id": "LAB-E001"
+    },
+    {
+      "control_id": "LAB-C002",
+      "status": "met",
+      "evidence_id": "LAB-E002"
+    },
+    {
+      "control_id": "LAB-C003",
+      "status": "not_met",
+      "evidence_id": "LAB-E003"
+    },
+    {
+      "control_id": "LAB-C004",
+      "status": "inconclusive",
+      "evidence_id": null
+    },
+    {
+      "control_id": "LAB-C005",
+      "status": "not_tested",
+      "evidence_id": null
+    }
+  ]
+}

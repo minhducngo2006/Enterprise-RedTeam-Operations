@@ -1,55 +1,102 @@
-# Red Team Rules of Engagement (RoE) Agreement
+# Rules of Engagement — Defensive Assessment Template
 
-This document defines the formal boundaries, scope, authorization, emergency contacts, and operational protocols governing the Red Team adversary emulation exercise.
+> **TEMPLATE ONLY — NOT AN AUTHORIZATION**
+>
+> This document is a planning template. It does not grant permission to access, scan, test, alter or monitor any system. No activity is authorized until the applicable organization has separately approved a complete scope in writing through its authorized process and the relevant owners have confirmed the test window. This template does not create legal immunity, a safe harbor or protection from disciplinary action.
 
----
+## 1. Assessment identity
 
-## 1. Exercise Objectives & Authorization
-- **Primary Objective**: Evaluate corporate defensive controls, perimeter resilience, detection timelines, and internal response procedures against realistic Advanced Persistent Threat (APT) attack chains.
-- **Authorization Authority**: Chief Information Security Officer (CISO) & Director of Security Operations.
-- **Legal Safe Harbor**: All activities defined within Section 2 are pre-authorized and explicitly protected from prosecution or internal disciplinary action.
+| Field | Value |
+|---|---|
+| Engagement / exercise ID | `[REQUIRED — UNASSIGNED]` |
+| Assessment title | `[REQUIRED]` |
+| Organization / legal entity | `[REQUIRED — OWNER TO COMPLETE]` |
+| Business owner | `[REQUIRED — NAME / ROLE]` |
+| Security owner | `[REQUIRED — NAME / ROLE]` |
+| Technical lead | `[REQUIRED — NAME / ROLE]` |
+| Document version | `[REQUIRED]` |
+| Status | `DRAFT — NOT AUTHORIZED` |
+| Approval date (UTC) | `[BLANK UNTIL APPROVED]` |
 
----
+## 2. Objective and permitted assessment scope
 
-## 2. Scope Definition
+Describe the defensive objective, the control being assessed and the expected evidence. For the V2.1 portfolio, the fixed control catalog is:
 
-### In-Scope Systems & Targets
-- Corporate External IP Subnets: `198.51.100.0/24`, `203.0.113.0/24`
-- In-Scope Domains: `*.corp.local`, `*.target-enterprise.com`
-- User Workstation VLAN: `VLAN 20 (10.10.20.0/24)`
-- Internal Server VLAN: `VLAN 10 (10.10.10.0/24)`
+- LAB-C001 — Backup Restoration
+- LAB-C002 — Alert Triage
+- LAB-C003 — Patch Review
+- LAB-C004 — Access Review
+- LAB-C005 — Incident Escalation
 
-### Explicitly Out-of-Scope (Strictly Prohibited)
-- Denial of Service (DoS / DDoS) attacks against any network link, server, or cloud service.
-- Physical security breaches, lock picking, or entry into physical data centers.
-- Customer-facing payment processing infrastructure (PCI-DSS Cardholder Data Environment).
-- Modification or destruction of production data (read-only verification required upon compromise).
+| Scope item | Explicit value required |
+|---|---|
+| In-scope environment | `[EXACT SYSTEM / TENANT / LAB IDENTIFIERS]` |
+| In-scope controls | `[CONTROL IDS]` |
+| Out-of-scope assets / tenants | `[EXPLICIT LIST]` |
+| Allowed data | `[SYNTHETIC FIXTURES ONLY; NO REAL ENVIRONMENT OR DATA]` |
+| Allowed validation methods | `[READ-ONLY REVIEW OF SYNTHETIC FIXTURES / PAPER TABLETOP USING SYNTHETIC FIXTURES ONLY]` |
+| Start and end (UTC) | `[APPROVED WINDOW]` |
+| Source locations | `[SYNTHETIC FIXTURE PATHS ONLY; NO LIVE LOG SOURCES]` |
 
----
+Do not use wildcard scope. Identify each environment and its owner. Any ambiguous asset is out of scope until explicitly added through a separately approved change.
 
-## 3. Trusted Agents & White Cell Coordination
+## 3. Prohibited activity
 
-The White Cell acts as the liaison between the Red Team and enterprise management, maintaining situational awareness while ensuring operational confidentiality.
+For this project and its synthetic-only evidence toolkit, the following are prohibited:
 
-| Role | Name | Title | Contact Number | Secure Email |
-| :--- | :--- | :--- | :--- | :--- |
-| **White Cell Lead** | Jane Doe | Director of InfoSec | +1-555-0192 | `jdoe@corp.local` |
-| **SOC Liaison** | John Smith | SOC Manager | +1-555-0193 | `jsmith@corp.local` |
-| **Red Team Lead** | Alex Vance | Lead Red Teamer | +1-555-0194 | `redteam-lead@partner.corp` |
+- live scanning, probing or testing of any real system as part of this synthetic-only portfolio;
+- vendor-run or live simulations, even when described as benign;
+- credential harvesting, password/hash collection or credential testing;
+- endpoint-evasion, security-control tampering or bypass instructions;
+- persistence, lateral movement, command-and-control or remote execution;
+- access to, copying or exfiltration of real customer or personal data;
+- modification of production systems, accounts, policies or security settings;
+- testing outside the written scope or approved window.
 
----
+Any broader activity requires a separate project, risk review and explicit authorization; it is not implied by this template.
 
-## 4. Emergency Halt & Deconfliction Procedures
+## 4. Safety controls and stop conditions
 
-### Emergency Halt Conditions
-The exercise will be halted immediately under any of the following circumstances:
-1. Unplanned disruption of critical production services or customer transactions.
-2. Discovery of an actual (non-simulated) external threat actor operating in the environment.
-3. Formal request from the White Cell Lead or CISO.
+Stop the activity and preserve only the synthetic exercise record. If real sensitive data or an actual incident is encountered, stop collection and route it through the organization's incident-response process; do not copy raw logs or data into this repository. Notify the designated owner if any of the following occurs:
 
-### Deconfliction Protocol
-When the SOC detects suspicious activity:
-1. The SOC analyst contacts the White Cell Lead.
-2. The White Cell checks the Red Team activity log (Timestamp, Source IP, Target Host, Action).
-3. If activity matches the Red Team ledger: marked as **Deconflicted (Simulated Attack)**.
-4. If activity does NOT match: treated immediately as an **Active Real-World Security Incident**.
+- an asset, tenant, identity or dataset is outside the approved scope;
+- service availability, integrity or confidentiality may be affected;
+- real credentials, personal data or customer records are encountered;
+- a control behaves unexpectedly or an alert indicates possible real compromise;
+- the activity cannot be safely distinguished from an actual incident;
+- an authorized contact requests a stop;
+- the approved window expires or a required contact is unavailable.
+
+| Stop authority | Contact / role | Approved communication channel |
+|---|---|---|
+| Business owner | `[BLANK]` | `[BLANK]` |
+| Security incident owner | `[BLANK]` | `[BLANK]` |
+| Technical lead | `[BLANK]` | `[BLANK]` |
+
+No contact is pre-filled or presumed available.
+
+## 5. Data handling and evidence
+
+- Repository examples and fixtures must be synthetic.
+- Do not place secrets, personal data, customer records, raw directory exports, production logs or host inventories in this repository.
+- Record a source type, control ID, evidence reference label, collection method, timestamp and reviewer for every assessment record.
+- An evidence reference label is not the artifact itself and is not proof of integrity.
+- Store any real engagement evidence only in the organization's approved restricted evidence repository, outside this project.
+- Define access, retention, deletion and incident escalation before collecting any data.
+
+## 6. Deconfliction and communication
+
+Record the approved owner, communication channel, escalation route and change-control process. A deconfliction record does not expand the approved scope. Unexpected indicators of a real incident must be routed to the organization's incident-response process, not treated as exercise success.
+
+## 7. Approval record
+
+All approvals must be completed through the organization's approved signing process. A typed placeholder or an unsigned copy is not authorization.
+
+| Approver role | Name / identity | Decision | Approval reference | Timestamp (UTC) |
+|---|---|---|---|---|
+| Business owner | `[BLANK]` | `PENDING` | `[BLANK]` | `[BLANK]` |
+| Security owner | `[BLANK]` | `PENDING` | `[BLANK]` | `[BLANK]` |
+| System / data owner | `[BLANK]` | `PENDING` | `[BLANK]` | `[BLANK]` |
+| Legal / privacy reviewer (if required) | `[BLANK]` | `PENDING` | `[BLANK]` | `[BLANK]` |
+
+**Authorization status:** `NOT AUTHORIZED` until all required approvals and the exact scope are recorded and independently checked.

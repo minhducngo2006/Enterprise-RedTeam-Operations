@@ -1,6 +1,2 @@
-# Enterprise Red-Team Suite Dependencies
-# The core assessment tool runs on standard Python 3.
-# Recommended optional utilities for live LDAP / Active Directory integration:
-ldap3>=2.9.1
-impacket>=0.11.0
-pytest>=7.4.0
+# V2.1 core and tests use the Python standard library only.
+# No third-party runtime or test dependencies.

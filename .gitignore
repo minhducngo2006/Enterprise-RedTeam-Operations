@@ -19,3 +19,9 @@ venv/
 .idea/
 *.swp
 *.swo
+
+# Local report output and private scratch (never store real evidence)
+/outputs/
+/private/
+.env.*
+!.env.example

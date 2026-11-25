@@ -1,20 +1,52 @@
-# Red Team Activity & Deconfliction IOC Ledger
+# Defensive Evidence & Deconfliction Register
 
-This ledger records all red team activities, operational timestamps, compromised hosts, staging directories, and artifact cleanup verifications.
+> **Blank template — no activity is represented as performed.**
+>
+> All rows must be created for an approved exercise. Do not copy real hostnames, public IPs, user identities, credentials, customer data or raw logs into this repository. Use synthetic aliases and synthetic evidence-reference labels only.
+>
+> This human-readable governance register is not the strict V2.1 CLI JSON input. Only `control_id`, `status` and `evidence_id` map to a submitted `controls[]` record; `record_id`, asset alias, observation, timestamp, reviewer and cleanup fields remain outside that input schema.
 
-| Timestamp (UTC) | Source IP / C2 | Target Host | Executed Technique | Account Context | Artifact Created | Cleanup Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| 2026-03-03 14:15 | `198.51.100.42` | `WS-0419` | Phishing Payload / C2 Beacon | `CORP\j_smith` | Memory Only (In-process) | Terminated |
-| 2026-03-05 09:30 | `10.10.20.15` | `DC01` | Kerberoast TGS Request | `CORP\j_smith` | Event ID 4769 logged | N/A (Standard Auth) |
-| 2026-03-07 11:20 | `10.10.20.15` | `SQL-01` | WinRM Lateral Movement | `CORP\svc_mssql_prod` | WinRM Session Event 91 | Disconnected |
-| 2026-03-08 16:45 | `10.10.20.15` | `CORP-CA` | AD CS ESC1 Certificate Req | `CORP\j_smith` | Certificate Serial `4A82F0` | Revoked by Admin |
-| 2026-03-10 10:00 | `10.10.10.5` | `DC01` | WinRM Remote Execution | `CORP\Administrator` | Event 4624 (Logon Type 3) | Session Cleared |
+## 1. Record metadata
 
----
+| Field | Value |
+|---|---|
+| Exercise ID | `[REQUIRED]` |
+| Source kind | `synthetic` |
+| Catalog | `LAB-C001 through LAB-C005` |
+| Register version | `1` |
+| Record owner | `[BLANK]` |
+| Reviewer | `[BLANK]` |
+| Last reviewed (UTC) | `[BLANK]` |
 
-## Artifact Removal Verification Checklist
-- [x] All active C2 beacon agents terminated and memory unmapped.
-- [x] Temporary staging directories and test files removed from all endpoints.
-- [x] Test certificates requested from AD CS revoked in the Certificate Authority console.
-- [x] Group Policy modifications reverted to baseline configuration.
-- [x] White Cell verification and deconfliction confirmation received.
+## 2. Evidence register
+
+| Record ID | Control ID | Asset alias | Observation (synthetic, concise) | Observed at (UTC) | Source kind | Evidence reference | Assessment status | Reviewer |
+|---|---|---|---|---|---|---|---|---|
+| `[UNASSIGNED]` | `[LAB-C00X]` | `[ASSET-ALIAS]` | `[NO OUTCOME — BLANK TEMPLATE ROW]` | `[BLANK]` | `synthetic` | `[LAB-E### — LABEL ONLY]` | `[BLANK — NOT SUBMITTED]` | `[BLANK]` |
+
+Allowed submitted-control statuses: `met`, `not_met`, `inconclusive`, `not_tested`.
+
+A blank template row is not a submitted record. Do not use `not_assessed` or `omitted` as control statuses. A control not submitted is absent from the submitted `controls[]` array and counted separately as omitted by the report.
+
+A status must reflect the actual evidence available. Never pre-check a result or infer success from the absence of an alert.
+
+## 3. Cleanup and closure
+
+| Record ID | Cleanup required? | Cleanup status | Cleanup evidence reference | Verified by | Verified at (UTC) |
+|---|---|---|---|---|---|
+| `[UNASSIGNED]` | `unknown` | `not_assessed` | `[BLANK]` | `[BLANK]` | `[BLANK]` |
+
+Allowed cleanup statuses: `not_assessed`, `pending`, `completed`, `not_applicable`, `failed`.
+
+`completed` requires a traceable evidence reference and a named verifier. A blank cell is not equivalent to completed. No cleanup state is pre-populated as successful.
+
+## 4. Provenance and handling rules
+
+1. Every record belongs to one approved exercise ID and one control ID from the fixed catalog.
+2. `source_kind` for repository examples is `synthetic`.
+3. Evidence references are labels only; they do not represent artifact bytes, cryptographic hashes or independent attestations.
+4. Real engagement evidence must remain in the organization's approved restricted evidence store, not in this repository.
+5. Do not include passwords, tokens, private keys, raw event logs, real IP/host/user identifiers or customer records.
+6. Keep observation, inference, inconclusive result and not-tested status distinct.
+7. Record who reviewed each result and when; do not mark a record verified without an actual review.
+8. If sensitive data is encountered, stop collection and follow the organization's incident/data-handling process.
